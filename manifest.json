@@ -1,0 +1,43 @@
+{
+  "name": "money2",
+  "version": "0.11",
+  "manifest_version": 3,
+  "author": "ali <> irronyx <> ",
+  "description": "...",
+  "incognito": "spanning",
+  "icons": {
+    "48": "icons/like.png"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://vc.ru/*",
+    "https://vk.com/*"
+  ],
+  "options_ui": {
+    "page": "settings.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "background": {
+    "scripts": ["js/background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://vc.ru/*"],
+      "js": ["js/content-vc.js"],
+      "run_at": "document_end"
+    },
+    {
+      "matches": ["https://vk.com/*"],
+      "js": ["js/content-vk.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

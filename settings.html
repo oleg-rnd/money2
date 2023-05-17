@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Extension">
+  <title>Money2</title>
+  <!-- <link rel="icon" href="/favicon.ico"> -->
+  <link rel="manifest" href="/manifest.json">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+   <symbol id="exclamation-triangle-fill" viewBox="0 0 16 16">
+      <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+    </symbol>
+  </svg>
+  <div class="container mt-1">
+    <div class="row">
+      <div class="col-12">
+        <ul class="nav nav-tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#settings" type="button" role="tab" aria-controls="home" aria-selected="true">Настройки</button>
+          </li>
+          <li class="nav-item invisible" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#settingsAuthor" type="button" role="tab" aria-controls="profile" aria-selected="false">Авторам</button>
+          </li>
+          <li class="nav-item invisible" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#feedback" type="button" role="tab" aria-controls="profile" aria-selected="false">Обратная связь</button>
+          </li>
+          <li class="nav-item invisible" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#histat" type="button" role="tab" aria-controls="profile" aria-selected="false">История и статистика</button>
+          </li>
+          <li class="nav-item invisible" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#other" type="button" role="tab" aria-controls="profile" aria-selected="false">Дополнительное</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+            <form name=settings action="#" method=post class="needs-validation" novalidate>
+              <input type=hidden name=action value=settings>
+              <div class="row mb-3">
+                <div class="col-8"></div>
+
+              </div>
+              <br>
+              
+              
+              <div class="row mb-3">
+                <label class="col-sm-3 col-form-label col-form-label-sm">Баланс</label>
+                <label class="col-5 col-sm-3 col-form-label col-form-label-sm fw-bold position-relative">
+                  <span id=balance>0</span> руб.
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    не отправлено <span id=balanceNotSend>0</span> руб.
+                  </span>
+                </label>
+                <div class="col-7 col-sm-6">
+                  <button type=button class="btn btn-primary btn-sm float-end" id=btnDeposit disabled>Пополнить баланс</button>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for=mode class="col-sm-3 col-form-label col-form-label-sm">Режим отображения</label>
+                <div class="form-check form-switch col-sm-9">
+                  <input class="form-check-input" type=checkbox role=switch id=modeHiddenEnabled name="settings[mode_hidden_enabled]" value=1 disabled>
+                  <label class="form-check-label col-form-label-sm pt-0" for=modeHiddenEnabled>скрытый</label>
+                </div>
+              </div>
+              
+              
+              
+              <div class="row mb-3">
+                <label for=weightForLike class="col-sm-3 col-form-label col-form-label-sm">&quot;Вес&quot; одного лайка</label>
+                <div class="col-4 col-sm-2">
+                  <input type=number class="form-control form-control-sm" id=weightForLike name="settings[weight_for_like]" value=0 min=0 max=999 disabled>
+                </div>
+                <label class="col-2 col-sm-2 gx-0 col-form-label col-form-label-sm">руб.</label>
+                  
+                  
+                  <div class="col-6 col-sm-5">
+                  <div class="row">
+                    <div class="form-check form-switch col-12">                 
+                      <input class="form-check-input" type=checkbox role=switch id=autoLikeEnabled name="settings[auto_like_enabled]" value=1 disabled>
+                      <label class="form-check-label col-form-label-sm pt-0" for=autoLikeEnabled>режим &quot;автолайка&quot;</label>                
+                 </div>
+                  </div> 
+                  </div>
+                
+              </div>
+              
+              
+              <div class="row mb-3">
+                <label for=commentLike class="col-sm-3 col-form-label col-form-label-sm">Коммент-лайк</label>
+                <div class="col-4 col-sm-2">
+                  <input type=number class="form-control form-control-sm" id=commentLike name="settings[comment_like]" value=0 min=0 max=999 disabled>
+                </div>
+                <label class="col-2 col-sm-2 gx-0 col-form-label col-form-label-sm">руб.</label>
+                
+                <div class="col-6 col-sm-5">
+                  <div class="row">
+                    <div class="form-check form-switch col-12">
+                      <input class="form-check-input" type=checkbox role=switch id=commentLikeEnabled name="settings[comment_like_enabled]" value=1 checked disabled>
+                      <label class="form-check-label col-form-label-sm pt-0" for=commentLikeEnabled>включить коммент-лайк</label>
+                    </div>
+                  </div>
+                  </div>
+                  
+              </div>
+              <br>
+              
+              
+              <fieldset class="row mb-3 pt-3 border-top border-bottom border-dark-subtle">
+                <legend class="col-form-label col-sm-3 pt-0">Доли</legend>
+                <div class="col-sm-9">
+                  <div class="row mb-3">
+                    <label class="col-3 col-sm-3 col-form-label col-form-label-sm" for=quotaBank>Банкам</label>
+                    <div class="col-3 col-sm-2">
+                      <input type=text class="form-control form-control-sm disabled" id=quotaBank name="settings[quota_bank]" value=5 readonly>
+                    </div>
+                    <label class="col-6 col-sm-1 gx-0 col-form-label col-form-label-sm">%</label>
+                    <div class="col-12 col-sm-1">&nbsp;</div>
+                    <label class="col-3 col-sm-2 col-form-label col-form-label-sm" for=quotaAuthor>Авторам</label>
+                    <div class="col-3 col-sm-2">
+                      <input type=text class="form-control form-control-sm disabled" id=quotaAuthor name="settings[quota_author]" value=78.5 readonly>
+                    </div>
+                    <label class="col-6 col-sm-1 gx-0 col-form-label col-form-label-sm">%</label>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label col-form-label-sm" for=quotaPlatform>Площадке</label>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm text-end"><sub>10</sub></label>
+                    <div class="col-10 col-sm-3">
+                      <input class="form-range" type=range id=quotaPlatform name="settings[quota_platform]" value=20 min=10 max=35 step=0.5 disabled>
+                    </div>
+                    <label class="col-1 col-sm-6 gx-0 col-form-label col-form-label-sm"><sub>35</sub></label>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label col-form-label-sm" for=quotaSystem>Системе</label>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm text-end"><sub>0.5</sub></label>
+                    <div class="col-10 col-sm-3">
+                      <input class="form-range" type=range id=quotaSystem name="settings[quota_system]" value=2 min=0.5 max=5 step=0.5 disabled>
+                    </div>
+                    <label class="col-1 col-sm-6 gx-0 col-form-label col-form-label-sm"><sub>5</sub></label>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-0 col-sm-2" ></div>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm text-end"><sub>10</sub></label>
+                    <div class="col-10 col-sm-3">
+                      <input class="form-range" type=range id=quotaGrow name="settings[quota_grow]" value=70 min=10 max=90 step=0.5 disabled>
+                    </div>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm"><sub>90</sub></label>
+                    <label class="col-sm-5 col-form-label col-form-label-sm text-center text-sm-start" for=quotaGrow>из них - на развитие</label>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="row mb-3 border-bottom border-dark-subtle">
+                <legend class="col-form-label col-sm-3 pt-0">Код восстановления</legend>
+                <div class="col-3">
+                  <input class="form-control form-control-sm" type=text placeholder="" name="settings[private_key]" value="" minlength=5 maxlength=12 data-autosave="false">
+                </div>
+                <div class="col-6 text-end">
+                  <button type=button class="btn btn-primary btn-sm" id=btnAccountRepair>Восстановить</button>
+                  <button type=button class="btn btn-primary btn-sm" id=btnAccountCreate>Создать</button>
+                </div>
+                <div class="col-9 offset-3">
+                  <p><small>Запишите его, и храните для восстановления аккаунта, в случае переустановки браузера, системы, очистки данных сайтов в браузере, и для использования из другого браузера.</small></p>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          
+          
+          <div class="tab-pane fade" id="settingsAuthor" role="tabpanel" aria-labelledby="settings-author-tab">
+            <form name=settings_author action="#" method=post>
+              <input type=hidden name=action value=settings_author>
+              <div class="alert alert-danger alert-dismissible fade show d-flex align-items-center py-1 mx-1" role="alert">
+                <svg class="bi flex-shrink-0 me-3" role="img" aria-label="Warning:" style="width:30px"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div style="line-height:18px">
+                  <strong>ВАЖНО!</strong><br><small><i>Публикаторам:</i> Если вы размещаете ЧУЖОЙ контент без договорённости с автором, и намерены получать деньги за него, не ждите содействия! </small>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+              <br>
+              
+                            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0">Пригласить автора<br><b id="invited"></b></legend>
+                <div class="col-sm-9">
+                  <div class="row mb-2 key-page">
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm" disabled>+</button>&nbsp;<button type=button class="btn btn-primary btn-sm" disabled>&ndash;</button>
+                    </div>
+                    <div class="col-sm-6 position-relative">
+                      <div class="input-group input-group-sm has-validation">со страницей&nbsp; 
+                        <span class="input-group-text">vk.ru/</span>
+                        <input type=text class="form-control" name="settings[page][]" value="" placeholder="xxxxx" title="Пример: vk.ru/xxxxx" pattern="^[0-9]+(-[0-9a-z-]+)?$" minlength=2 maxlength=50>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm" disabled>Подтвердить</button>
+                    </div>
+                  </div>
+                  </div>
+              </fieldset>
+              
+                            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0"><b id="invited"></b></legend>
+                <div class="col-sm-9">
+                  <div class="row mb-2 key-page">
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm" disabled>+</button>&nbsp;<button type=button class="btn btn-primary btn-sm" disabled>&ndash;</button>
+                    </div>
+                    <div class="col-sm-6 position-relative">
+                      <div class="input-group input-group-sm has-validation">со страницей&nbsp; 
+                        <span class="input-group-text">vk.ru/</span>
+                        <input type=text class="form-control" name="settings[page][]" value="" placeholder="xxxxx" title="Пример: vk.ru/xxxxx" pattern="^.+$" minlength=2 maxlength=75>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm" disabled>Подтвердить</button>
+                    </div>
+                  </div>
+                  </div>
+              </fieldset>
+              
+              
+              <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0">Код Подтверждения<br><b id="publicKeyAuthor"></b></legend>
+                <div class="col-sm-9">
+                  <div class="row mb-2 key-page">
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm">+</button>&nbsp;<button type=button class="btn btn-primary btn-sm">&ndash;</button>
+                    </div>
+                    <div class="col-sm-6 position-relative">
+                      <div class="input-group input-group-sm has-validation">
+                        <span class="input-group-text">на странице vk.ru/</span>
+                        <input type=text class="form-control" name="settings_author[page][]" value="" placeholder="xxxxx" title="Пример: vk.ru/xxxx" pattern="^.+$" minlength=2 maxlength=75 data-base-url="https://vk.ru/">
+                        <div class="invalid-feedback">Код не найден</div>
+                        <div class="valid-feedback">Код обнаружен</div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm">Проверить</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-9 offset-3">
+                  <p><small>Разместите код в своём аккаунте, на странице автора, и тогда сможете получать деньги за комментарии.</small></p>
+                </div>
+    
+              </fieldset>
+              <fieldset class="row mb-3 pt-3 border-top border-bottom border-dark-subtle">
+                <legend class="col-form-label col-sm-3 pt-0">Доли</legend>
+                <div class="col-sm-9">
+                  <div class="row mb-3">
+                    <label class="col-3 col-sm-3 col-form-label col-form-label-sm" for=aQuotaBank>Банкам</label>
+                    <div class="col-3 col-sm-2">
+                      <input type=text class="form-control form-control-sm disabled" id=aQuotaBank name="settings_author[quota_bank]" value=5 readonly>
+                    </div>
+                    <label class="col-6 col-sm-1 gx-0 col-form-label col-form-label-sm">%</label>
+                    <div class="col-12 col-sm-1">&nbsp;</div>
+                    <label class="col-3 col-sm-2 col-form-label col-form-label-sm" for=aQuotaAuthor>Авторам</label>
+                    <div class="col-3 col-sm-2">
+                      <input type=text class="form-control form-control-sm disabled" id=aQuotaAuthor name="settings_author[quota_author]" value=78.5 readonly>
+                    </div>
+                    <label class="col-6 col-sm-1 gx-0 col-form-label col-form-label-sm">%</label>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label col-form-label-sm" for=aQuotaPlatform>Площадке</label>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm text-end"><sub>10</sub></label>
+                    <div class="col-10 col-sm-3">
+                      <input class="form-range" type=range id=aQuotaPlatform name="settings_author[quota_platform]" value=20 min=10 max=35 step=0.5>
+                    </div>
+                    <label class="col-1 col-sm-6 gx-0 col-form-label col-form-label-sm"><sub>35</sub></label>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label col-form-label-sm" for=aQuotaSystem>Системе</label>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm text-end"><sub>0.5</sub></label>
+                    <div class="col-10 col-sm-3">
+                      <input class="form-range" type=range id=aQuotaSystem name="settings_author[quota_system]" value=2 min=0.5 max=5 step=0.5>
+                    </div>
+                    <label class="col-1 col-sm-6 gx-0 col-form-label col-form-label-sm"><sub>5</sub></label>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col-0 col-sm-2"></div>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm text-end"><sub>10</sub></label>
+                    <div class="col-10 col-sm-3">
+                      <input class="form-range" type=range id=aQuotaGrow name="settings_author[quota_grow]" value=70 min=10 max=90 step=0.5>
+                    </div>
+                    <label class="col-1 col-sm-1 gx-0 col-form-label col-form-label-sm"><sub>90</sub></label>
+                    <label class="col-sm-5 col-form-label col-form-label-sm text-center text-sm-start" for=aQuotaGrow>из них на развитие</label>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0">Платёжные реквизиты</legend>
+                <div class="col-sm-9">
+                  <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label col-form-label-sm" for=MIRN>ПС МИР</label>
+                    <div class="col-sm-9">
+                      <input type=text class="form-control form-control-sm" id=MIRN name="settings_author[mir_n]" value="" maxlength=16>
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label col-form-label-sm" for=withdraw>Сумма</label>
+                    <div class="col-6 col-sm-4">
+                      <input type=number class="form-control form-control-sm" id=withdraw name="settings_author[withdraw]" value=1000 min=1000 max=999999>
+                    </div>
+                    <label class="col-2 col-sm-2 gx-0 col-form-label col-form-label-sm">руб.</label>
+                    <div class="col-4 col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm">Вывести</button>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
+            <form name=feedback action="#" method=post>
+              <input type=hidden name=action value=feedback>
+                <div class="row mb-3">
+                  <label class="col-sm-3 col-form-label col-form-label-sm" for=message>Сообщение в службу поддержки</label>
+                  <div class="col-sm-9">
+                    <textarea rows=5 cols=50 class="form-control form-control-sm" id=message name="feedback[message]" value="" minlength=10 maxlength=2000 placeholder="Текст..."></textarea>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-sm-12 text-end">
+                    <button type=submit class="btn btn-primary btn-sm">Отправить</button>
+                  </div>
+                </div>
+            </form>
+          </div>
+          <div class="tab-pane fade" id="histat" role="tabpanel" aria-labelledby="histostat-tab">
+          
+          </div>
+          <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+                      <div class="col-9 offset-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type=checkbox name="settings_author[welcome_enabled]" value=1 id=authorWelcomeEnabled>
+                    <label class="form-check-label col-form-label-sm pt-0" for=authorWelcomeEnabled>"приглашать" авторов автоматически, если они не подписаны</label>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--  <script src="js/jquery.min.js"></script> -->
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
