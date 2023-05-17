@@ -1,2 +1,2 @@
 # money2
-System of the good
+System of the good in browser
