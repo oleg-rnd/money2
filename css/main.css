@@ -1,0 +1,10 @@
+:root{--bs-tertiary-bg:#e9ecef}
+html,body{width:100%;background-color:#fff;}  // settings fon
+h1,form,.footer{padding:10px}
+h1{margin-bottom:20px;background:#ddd}
+body > .start{border:1px solid #999;background-color:#eee}
+.container{padding:0;width:100vw;min-width:320px;max-width:800px;background-color:#fbfbfb}
+.footer{border-top:1px solid #ddd;background:#eee}
+.nav-link{padding-left:15px;padding-right:15px;}
+.nav-tabs .nav-link.active{background-color:#f0f0f0}
+.form-control.disabled{background-color: var(--bs-form-control-disabled-bg);opacity:1;pointer-events:none}
