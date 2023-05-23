@@ -34,7 +34,7 @@
             <button class="nav-link" data-bs-toggle="tab" data-bs-target="#histat" type="button" role="tab" aria-controls="profile" aria-selected="false">История и статистика</button>
           </li>
           <li class="nav-item invisible" role="presentation">
-            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#other" type="button" role="tab" aria-controls="profile" aria-selected="false">Дополнительное</button>
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#other" type="button" role="tab" aria-controls="profile" aria-selected="false">Доп!</button>
           </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -166,6 +166,24 @@
                   <p><small>Запишите его, и храните для восстановления аккаунта, в случае переустановки браузера, системы, очистки данных сайтов в браузере, и для использования из другого браузера.</small></p>
                 </div>
               </fieldset>
+              
+              
+              
+                            <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0">Код приглашения</legend>
+                <div class="col-sm-9">
+                  <div class="row mb-3">
+                    <label class="col-sm-3 col-form-label col-form-label-sm" for=______>(для Авторов)</label>
+                    <div class="col-sm-9">
+                      <input type=text class="form-control form-control-sm" id=______ name="________" value="" maxlength=16>
+                    </div>
+                  </div>
+                  
+                </div>
+              </fieldset>
+              
+              
+
             </form>
           </div>
           
@@ -181,47 +199,9 @@
                 </div>
               </div>
               <br>
+                                      
               
-                            <fieldset class="row mb-3">
-                <legend class="col-form-label col-sm-3 pt-0">Пригласить автора<br><b id="invited"></b></legend>
-                <div class="col-sm-9">
-                  <div class="row mb-2 key-page">
-                    <div class="col-sm-3">
-                      <button type=button class="btn btn-primary btn-sm" disabled>+</button>&nbsp;<button type=button class="btn btn-primary btn-sm" disabled>&ndash;</button>
-                    </div>
-                    <div class="col-sm-6 position-relative">
-                      <div class="input-group input-group-sm has-validation">со страницей&nbsp; 
-                        <span class="input-group-text">vk.ru/</span>
-                        <input type=text class="form-control" name="settings[page][]" value="" placeholder="xxxxx" title="Пример: vk.ru/xxxxx" pattern="^[0-9]+(-[0-9a-z-]+)?$" minlength=2 maxlength=50>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <button type=button class="btn btn-primary btn-sm" disabled>Подтвердить</button>
-                    </div>
-                  </div>
-                  </div>
-              </fieldset>
-              
-                            <fieldset class="row mb-3">
-                <legend class="col-form-label col-sm-3 pt-0"><b id="invited"></b></legend>
-                <div class="col-sm-9">
-                  <div class="row mb-2 key-page">
-                    <div class="col-sm-3">
-                      <button type=button class="btn btn-primary btn-sm" disabled>+</button>&nbsp;<button type=button class="btn btn-primary btn-sm" disabled>&ndash;</button>
-                    </div>
-                    <div class="col-sm-6 position-relative">
-                      <div class="input-group input-group-sm has-validation">со страницей&nbsp; 
-                        <span class="input-group-text">vk.ru/</span>
-                        <input type=text class="form-control" name="settings[page][]" value="" placeholder="xxxxx" title="Пример: vk.ru/xxxxx" pattern="^.+$" minlength=2 maxlength=75>
-                      </div>
-                    </div>
-                    <div class="col-sm-3">
-                      <button type=button class="btn btn-primary btn-sm" disabled>Подтвердить</button>
-                    </div>
-                  </div>
-                  </div>
-              </fieldset>
-              
+             
               
               <fieldset class="row mb-3">
                 <legend class="col-form-label col-sm-3 pt-0">Код Подтверждения<br><b id="publicKeyAuthor"></b></legend>
@@ -244,7 +224,7 @@
                   </div>
                 </div>
                 <div class="col-9 offset-3">
-                  <p><small>Разместите код в своём аккаунте, на странице автора, и тогда сможете получать деньги за комментарии.</small></p>
+                  <p><small>Разместите код в своём аккаунте, на странице автора, и тогда сможете получать деньги за авторский контент.</small></p>
                 </div>
     
               </fieldset>
@@ -291,6 +271,8 @@
                   </div>
                 </div>
               </fieldset>
+              
+
               <fieldset class="row mb-3">
                 <legend class="col-form-label col-sm-3 pt-0">Платёжные реквизиты</legend>
                 <div class="col-sm-9">
@@ -312,8 +294,32 @@
                   </div>
                 </div>
               </fieldset>
+
+
+              <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-3 pt-0">Пригласить автора<br><b id="invited"></b></legend>
+                <div class="col-sm-9">
+                  <div class="row mb-2 key-page">
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm" disabled>+</button>&nbsp;<button type=button class="btn btn-primary btn-sm" disabled>&ndash;</button>
+                    </div>
+                    <div class="col-sm-6 position-relative">
+                      <div class="input-group input-group-sm has-validation">со страницей&nbsp; 
+                        <span class="input-group-text">vk.ru/</span>
+                        <input type=text class="form-control" name="settings[page][]" value="" placeholder="xxxxx" title="Пример: vk.ru/xxxxx" pattern="^[0-9]+(-[0-9a-z-]+)?$" minlength=2 maxlength=50>
+                      </div>
+                    </div>
+                    <div class="col-sm-3">
+                      <button type=button class="btn btn-primary btn-sm" disabled>Подтвердить</button>
+                    </div>
+                  </div>
+                  </div>
+              </fieldset>
+              
             </form>
           </div>
+          
+          
           <div class="tab-pane fade" id="feedback" role="tabpanel" aria-labelledby="feedback-tab">
             <form name=feedback action="#" method=post>
               <input type=hidden name=action value=feedback>
