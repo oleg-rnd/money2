@@ -1,5 +1,5 @@
 # money2
-System of the good in browser
+System of the systematic good in your browser
 
 How to install a temporary add-on?
 
